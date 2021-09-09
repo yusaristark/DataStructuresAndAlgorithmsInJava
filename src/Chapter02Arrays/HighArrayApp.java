@@ -1,57 +1,60 @@
 package Chapter02Arrays;
 
-class HighArray
-{
+class HighArray {
     private long[] a; // Ссылка на массив a
     private int nElems; // Количество элементов в массиве
+
     //-----------------------------------------------------------
     public HighArray(int max) // Конструктор
     {
         a = new long[max]; // Создание массива
         nElems = 0; // Пока нет ни одного элемента
     }
+
     //-----------------------------------------------------------
-    public boolean find(long searchKey)
-    { // Поиск заданного значения
+    public boolean find(long searchKey) { // Поиск заданного значения
         int j;
-        for(j=0; j<nElems; j++) // Для каждого элемента
-            if(a[j] == searchKey) // Значение найдено?
+        for (j = 0; j < nElems; j++) // Для каждого элемента
+            if (a[j] == searchKey) // Значение найдено?
                 break; // Да - выход из цикла
-        if(j == nElems) // Достигнут последний элемент?
+        if (j == nElems) // Достигнут последний элемент?
             return false; // Да
         else
             return true; // Нет
     }
+
     //-----------------------------------------------------------
     public void insert(long value) // Вставка элемента в массив
     {
         a[nElems] = value; // Собственно вставка
         nElems++; // Увеличение размера
     }
+
     //-----------------------------------------------------------
-    public boolean delete(long value)
-    {
+    public boolean delete(long value) {
         int j;
-        for(j=0; j<nElems; j++) // Поиск заданного значения
-            if( value == a[j] )
+        for (j = 0; j < nElems; j++) // Поиск заданного значения
+            if (value == a[j])
                 break;
-        if(j==nElems) // Найти не удалось
+        if (j == nElems) // Найти не удалось
             return false;
         else // Значение найдено
         {
-            for (int k=j; k<nElems; k++) // Сдвиг последующих элементов
-                a[k] = a[k+1];
+            for (int k = j; k < nElems; k++) // Сдвиг последующих элементов
+                a[k] = a[k + 1];
             nElems--; // Уменьшение размера
             return true;
         }
     }
+
     //-----------------------------------------------------------
     public void display() // Вывод содержимого массива
     {
-        for(int j=0; j<nElems; j++) // Для каждого элемента
+        for (int j = 0; j < nElems; j++) // Для каждого элемента
             System.out.print(a[j] + " "); // Вывод
         System.out.println("");
     }
+
     //-----------------------------------------------------------
     public long getMax() {
         if (a.length == 0) {
@@ -66,6 +69,7 @@ class HighArray
         }
         return max;
     }
+
     public void removeMax() {
         long max = getMax();
         if (getMax() != -1) {
@@ -94,11 +98,10 @@ class HighArray
         return false;
     }
 } // Конец класса HighArray
+
 ////////////////////////////////////////////////////////////////
-class HighArrayApp
-{
-    public static void main(String[] args)
-    {
+class HighArrayApp {
+    public static void main(String[] args) {
         int maxSize = 100; // Размер массива
         HighArray arr; // Ссылка на массив
         arr = new HighArray(maxSize); // Создание массива
@@ -114,7 +117,7 @@ class HighArrayApp
         arr.insert(33);
         arr.display(); // Вывод элементов
         int searchKey = 35; // Поиск элемента
-        if( arr.find(searchKey) )
+        if (arr.find(searchKey))
             System.out.println("Found " + searchKey);
         else
             System.out.println("Can't find " + searchKey);

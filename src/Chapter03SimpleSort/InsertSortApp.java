@@ -4,40 +4,42 @@ package Chapter03SimpleSort;
 // Сортировка методом вставки
 // Запуск программы: C>java InsertSortApp
 //--------------------------------------------------------------
-class ArrayIns
-{
+class ArrayIns {
     private long[] a; // Ссылка на массив a
     private int nElems; // Количество элементов данных
+
     //--------------------------------------------------------------
     public ArrayIns(int max) // Конструктор
     {
         a = new long[max]; // Создание массива
         nElems = 0; // Пока нет ни одного элемента
     }
+
     //--------------------------------------------------------------
     public void insert(long value) // Вставка элемента в массив
     {
         a[nElems] = value; // Собственно вставка
         nElems++; // Увеличение размера
     }
+
     //--------------------------------------------------------------
     public void display() // Вывод содержимого массива
     {
-        for(int j=0; j<nElems; j++) // Для каждого элемента
+        for (int j = 0; j < nElems; j++) // Для каждого элемента
             System.out.print(a[j] + " "); // Вывод
         System.out.println("");
     }
+
     //--------------------------------------------------------------
-    public void insertionSort()
-    {
+    public void insertionSort() {
         int in, out;
         int copyCounter = 0;
         int compareCounter = 0;
-        for(out=1; out<nElems; out++) // out - разделительный маркер
+        for (out = 1; out < nElems; out++) // out - разделительный маркер
         {
             long temp = a[out]; // Скопировать помеченный элемент
             in = out; // Начать перемещения с out
-            while(in>0) // Пока не найден меньший элемент
+            while (in > 0) // Пока не найден меньший элемент
             {
                 if (a[in - 1] >= temp) {
                     ++compareCounter;
@@ -45,7 +47,7 @@ class ArrayIns
                     ++compareCounter;
                     break;
                 }
-                a[in] = a[in-1]; // Сдвинуть элемент вправо
+                a[in] = a[in - 1]; // Сдвинуть элемент вправо
                 ++copyCounter;
                 --in; // Перейти на одну позицию влево
             }
@@ -83,11 +85,10 @@ class ArrayIns
     }
 //--------------------------------------------------------------
 } // Конец класса ArrayIns
+
 ////////////////////////////////////////////////////////////////
-class InsertSortApp
-{
-    public static void main(String[] args)
-    {
+class InsertSortApp {
+    public static void main(String[] args) {
         int maxSize = 100; // Размер массива
         ArrayIns arr; // Ссылка на массив
         arr = new ArrayIns(maxSize); // Создание массива
